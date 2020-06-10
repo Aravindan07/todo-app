@@ -11,6 +11,13 @@ function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/tasks" component={Tasks} />
         <Route path="/card" component={Card} />
+        {/* <Route
+          path="/privacy-policy"
+          component={() => {
+            window.location.href = "https://example.com/1234";
+            return null;
+          }} */}
+        />
       </Switch>
     </React.Fragment>
   );

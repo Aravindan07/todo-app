@@ -22,9 +22,19 @@ export const Underline = styled.div`
   margin: 0 auto;
   border-radius: 10px;
 `;
+
 export const H2 = styled.h2`
-  text-align: center;
+  color: #6c63fe;
+  margin-bottom: 0px;
 `;
+
+export const TasksUnderline = styled.div`
+  height: 5px;
+  width: 10%;
+  background: #15b996;
+  border-radius: 10px;
+`;
+
 export const Card = styled.div`
   display: inline-flex;
   width: 300px;
@@ -33,4 +43,17 @@ export const Card = styled.div`
   box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.25);
   margin-left: 20px;
   margin-top: 20px;
+  padding: 10px;
+  overflow: auto;
+`;
+export const CardDetails = styled.div`
+  display: block;
+  margin: 0 auto;
+`;
+
+export const TaskName = styled.div`
+  color: #15b996;
+  max-width: 90%;
+  text-align: center;
+  font-size: 24px;
 `;
