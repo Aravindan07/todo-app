@@ -10,6 +10,12 @@ import {
   Card,
   CardDetails,
   TaskName,
+  Para,
+  Span,
+  LinkSpan,
+  Urgency,
+  ButtonDiv,
+  DeleteButton,
 } from "./styles";
 import TodoForm from "../TodoForm/index";
 
@@ -30,6 +36,7 @@ function HomePage() {
             id: key,
             task: responseData[key].task,
             time: responseData[key].time,
+            urgency: responseData[key].urgency,
           });
         }
         setTaskEntered(loadedTasks);
@@ -53,6 +60,13 @@ function HomePage() {
       });
   };
 
+  const removeTasksHandler = (taskId) => {
+    console.log(taskId);
+    setTaskEntered((prevTasks) =>
+      prevTasks.filter((task) => task.id !== taskId)
+    );
+  };
+
   return (
     <Wrapper>
       <Header>
@@ -69,18 +83,50 @@ function HomePage() {
       {taskEntered.map((ts) => {
         let test = ts.time.split(" ");
         return (
-          <Card key={ts.id}>
+          <Card key={ts.id} test={ts.urgency}>
             <CardDetails>
               <TaskName>{ts.task}</TaskName>
-              <span>Time Assigned : {ts.time}</span>
-              <p>
-                Make sure you complete it before{" "}
-                {moment()
-                  .add(parseInt(test[0]), test[1])
-                  .format("dddd, MMMM Do YYYY")
-                  .toLocaleString()}
-              </p>
-              <p>This will help you in achieving your goals :</p>
+              <Para>
+                Time Assigned : <Span>{ts.time}</Span>
+              </Para>
+              <Para>
+                Urgency : <Urgency test={ts.urgency}>{ts.urgency}</Urgency>
+              </Para>
+              <Para>
+                Deadline Assigned :{" "}
+                <Span>
+                  {moment()
+                    .add(parseInt(test[0]), test[1])
+                    .format("dddd, MMMM Do YYYY")
+                    .toLocaleString()}
+                </Span>
+              </Para>
+              <Para>
+                Having difficulties in completing this task try these{" "}
+                <LinkSpan
+                  onClick={() =>
+                    (window.location.href = `https://www.youtube.com/results?search_query=${ts.task}`)
+                  }
+                >
+                  Click Here
+                </LinkSpan>{" "}
+                or{" "}
+                <LinkSpan
+                  onClick={() =>
+                    (window.location.href = `https://www.udemy.com/courses/search/?q=${ts.task}`)
+                  }
+                >
+                  Click Here
+                </LinkSpan>
+              </Para>
+              <ButtonDiv>
+                <DeleteButton
+                  type="button"
+                  onClick={(id) => removeTasksHandler(ts.id)}
+                >
+                  Delete
+                </DeleteButton>
+              </ButtonDiv>
             </CardDetails>
           </Card>
         );

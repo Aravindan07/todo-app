@@ -4,10 +4,15 @@ import { FormWrapper, Form, Input, Button } from "./styles";
 function TodoForm(props) {
   const [taskEntered, setTaskEntered] = useState("");
   const [timeEntered, setTimeEntered] = useState("");
+  const [urgency, setUrgency] = useState("");
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    props.addTaskHandler({ task: taskEntered, time: timeEntered });
+    props.addTaskHandler({
+      task: taskEntered,
+      time: timeEntered,
+      urgency: urgency,
+    });
     console.log("Success");
   };
   return (
@@ -24,6 +29,12 @@ function TodoForm(props) {
           value={timeEntered}
           onChange={(event) => setTimeEntered(event.target.value)}
           placeholder="Completion time"
+        />
+        <Input
+          type="text"
+          value={urgency}
+          onChange={(event) => setUrgency(event.target.value)}
+          placeholder="Enter Urgency e.g Immediate"
         />
         <Button type="submit">ADD TASK</Button>
       </Form>
