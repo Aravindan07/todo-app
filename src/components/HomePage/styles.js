@@ -10,24 +10,15 @@ export const Header = styled.div`
   text-align: center;
   width: 200px;
   margin: 0 auto;
-  color: #6c63fe;
-`;
-
-export const H1 = styled.h1`
-  margin-bottom: 0px;
-`;
-
-export const Underline = styled.div`
-  height: 5px;
-  width: 150px;
-  background: #15b996;
-  margin: 0 auto;
-  border-radius: 10px;
+  background: -webkit-linear-gradient(#cc2b5e, #753a88);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 
 export const H2 = styled.h2`
   padding-left: 20px;
-  color: #6c63fe;
+  color: #753a88;
   margin-top: 40px;
   margin-bottom: 0px;
 `;
@@ -36,7 +27,7 @@ export const TasksUnderline = styled.div`
   margin-left: 20px;
   height: 5px;
   width: 5%;
-  background: #15b996;
+  background: #4d883a;
   border-radius: 10px;
 `;
 
@@ -47,12 +38,14 @@ export const Card = styled.div`
   height: 400px;
   border-radius: 10px;
   box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.25);
-  margin-left: 20px;
-  margin-top: 20px;
+  margin: 25px 0px 0px 25px;
   padding: 10px;
   overflow: auto;
   overflow-wrap: anywhere;
   border-top: ${setBorder};
+  :hover {
+    transform: scale(1.05);
+  }
 `;
 export const CardDetails = styled.div`
   display: flex;
@@ -62,7 +55,7 @@ export const CardDetails = styled.div`
 `;
 
 export const TaskName = styled.div`
-  color: #15b996;
+  color: #753a88;
   font-size: 22px;
 `;
 
@@ -72,11 +65,11 @@ export const Para = styled.p`
 `;
 
 export const Span = styled.span`
-  color: #6c63fe;
+  color: #753a88;
 `;
 
 export const LinkSpan = styled.span`
-  color: #6c63fe;
+  color: #753a88;
   :hover {
     cursor: pointer;
   }
@@ -87,18 +80,22 @@ export const Urgency = styled.span`
 `;
 
 function setBorder(props) {
-  if (props.test === "Immediate") {
+  if (props.urgency === "High") {
     return "10px solid #ff6666";
-  } else {
-    return "10px solid #15b996";
+  } else if (props.urgency === "Normal") {
+    return "10px solid #4d883a";
+  } else if (props.urgency === "Low") {
+    return "10px solid #fd9059";
   }
 }
 
 function setColor(props) {
-  if (props.test === "Immediate") {
+  if (props.urgency === "High") {
     return "#ff6666";
-  } else {
-    return "#15b996";
+  } else if (props.urgency === "Normal") {
+    return "#4d883a";
+  } else if (props.urgency === "Low") {
+    return "#fd9059";
   }
 }
 
@@ -108,7 +105,7 @@ export const ButtonDiv = styled.div`
   justify-content: center;
 `;
 export const DeleteButton = styled.button`
-  background: #ff4c4c;
+  background: #753a88;
   border: none;
   outline: none;
   color: #ffffff;
@@ -120,6 +117,6 @@ export const DeleteButton = styled.button`
   padding: 5px;
   :hover {
     cursor: pointer;
-    background: #ff7f7f;
+    box-shadow: 3px 3px 3px #d2d2d2;
   }
 `;

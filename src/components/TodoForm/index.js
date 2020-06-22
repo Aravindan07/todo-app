@@ -13,7 +13,6 @@ function TodoForm(props) {
       time: timeEntered,
       urgency: urgency,
     });
-    console.log("Success");
   };
   return (
     <FormWrapper>
@@ -23,19 +22,29 @@ function TodoForm(props) {
           value={taskEntered}
           onChange={(event) => setTaskEntered(event.target.value)}
           placeholder="Add Task here..."
+          required
         />
         <Input
           type="text"
           value={timeEntered}
           onChange={(event) => setTimeEntered(event.target.value)}
-          placeholder="Completion time"
+          placeholder="Time Needed(e.g 2 days)"
+          required
         />
         <Input
           type="text"
+          list="urgency-list"
           value={urgency}
           onChange={(event) => setUrgency(event.target.value)}
-          placeholder="Enter Urgency e.g Immediate"
+          placeholder="Enter Urgency"
+          required
         />
+        <datalist id="urgency-list">
+          <option value="High" />
+          <option value="Normal" />
+          <option value="Low" />
+        </datalist>
+
         <Button type="submit">ADD TASK</Button>
       </Form>
     </FormWrapper>
