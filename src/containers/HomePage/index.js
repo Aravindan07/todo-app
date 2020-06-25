@@ -11,12 +11,12 @@ import {
   Para,
   Span,
   LinkSpan,
-  Urgency,
+  Priority,
   ButtonDiv,
   DeleteButton,
 } from "./styles";
 import TodoForm from "../TodoForm/index";
-import LoaderIcon from "../../Loader/index";
+import LoaderIcon from "../../components/Loader/index";
 
 function HomePage() {
   const [taskEntered, setTaskEntered] = useState([]);
@@ -36,7 +36,7 @@ function HomePage() {
             id: key,
             task: responseData[key].task,
             time: responseData[key].time,
-            urgency: responseData[key].urgency,
+            priority: responseData[key].priority,
           });
         }
         setTaskEntered(loadedTasks);
@@ -92,17 +92,18 @@ function HomePage() {
         let DeadlineOf0 = Deadline.split("")[0];
         let DeadlineOfRemaining = Deadline.split("").slice(1).join("").trim();
         return (
-          <Card key={ts.id} urgency={ts.urgency}>
+          <Card key={ts.id} priority={ts.priority}>
             <CardDetails>
               <TaskName>{ts.task}</TaskName>
               <Para>
                 Time Assigned : <Span>{ts.time}</Span>
               </Para>
               <Para>
-                Urgency : <Urgency urgency={ts.urgency}>{ts.urgency}</Urgency>
+                Priority :{" "}
+                <Priority priority={ts.priority}>{ts.priority}</Priority>
               </Para>
               <Para>
-                Deadline Assigned :{" "}
+                Deadline :{" "}
                 <Span>
                   {moment()
                     .add(parseInt(DeadlineOf0), DeadlineOfRemaining)

@@ -4,15 +4,18 @@ import { FormWrapper, Form, Input, Button } from "./styles";
 function TodoForm(props) {
   const [taskEntered, setTaskEntered] = useState("");
   const [timeEntered, setTimeEntered] = useState("");
-  const [urgency, setUrgency] = useState("");
+  const [priority, setPriority] = useState("");
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
     props.addTaskHandler({
       task: taskEntered,
       time: timeEntered,
-      urgency: urgency,
+      priority: priority,
     });
+    setTaskEntered("");
+    setTimeEntered("");
+    setPriority("");
   };
   return (
     <FormWrapper>
@@ -33,13 +36,13 @@ function TodoForm(props) {
         />
         <Input
           type="text"
-          list="urgency-list"
-          value={urgency}
-          onChange={(event) => setUrgency(event.target.value)}
-          placeholder="Enter Urgency"
+          list="priority-list"
+          value={priority}
+          onChange={(event) => setPriority(event.target.value)}
+          placeholder="Enter Priority"
           required
         />
-        <datalist id="urgency-list">
+        <datalist id="priority-list">
           <option value="High" />
           <option value="Normal" />
           <option value="Low" />

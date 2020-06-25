@@ -59,6 +59,6 @@ export const Button = styled.button`
     transform: scale(1.2);
     -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
     transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
-    box-shadow: 5px 5px 5px #d2d2d2;
+    box-shadow: 3px 3px 3px #d2d2d2;
   }
 `;

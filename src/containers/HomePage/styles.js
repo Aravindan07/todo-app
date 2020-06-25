@@ -44,7 +44,7 @@ export const Card = styled.div`
   overflow-wrap: anywhere;
   border-top: ${setBorder};
   :hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
   }
 `;
 export const CardDetails = styled.div`
@@ -75,26 +75,26 @@ export const LinkSpan = styled.span`
   }
 `;
 
-export const Urgency = styled.span`
+export const Priority = styled.span`
   color: ${setColor};
 `;
 
 function setBorder(props) {
-  if (props.urgency === "High") {
+  if (props.priority === "High") {
     return "10px solid #ff6666";
-  } else if (props.urgency === "Normal") {
+  } else if (props.priority === "Normal") {
     return "10px solid #4d883a";
-  } else if (props.urgency === "Low") {
+  } else if (props.priority === "Low") {
     return "10px solid #fd9059";
   }
 }
 
 function setColor(props) {
-  if (props.urgency === "High") {
+  if (props.priority === "High") {
     return "#ff6666";
-  } else if (props.urgency === "Normal") {
+  } else if (props.priority === "Normal") {
     return "#4d883a";
-  } else if (props.urgency === "Low") {
+  } else if (props.priority === "Low") {
     return "#fd9059";
   }
 }
