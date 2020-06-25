@@ -43,9 +43,6 @@ export const Card = styled.div`
   overflow: auto;
   overflow-wrap: anywhere;
   border-top: ${setBorder};
-  :hover {
-    transform: scale(1.02);
-  }
 `;
 export const CardDetails = styled.div`
   display: flex;
@@ -118,5 +115,6 @@ export const DeleteButton = styled.button`
   :hover {
     cursor: pointer;
     box-shadow: 3px 3px 3px #d2d2d2;
+    transform: scale(1.02);
   }
 `;

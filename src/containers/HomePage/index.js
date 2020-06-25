@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Slide from "react-reveal/Slide";
 import moment from "moment";
 import {
   Wrapper,
@@ -75,65 +76,67 @@ function HomePage() {
   };
 
   return (
-    <Wrapper>
-      <Header>
-        <h1>TASK SAVER</h1>
-      </Header>
-      <TodoForm addTaskHandler={addTasks} />
-      {loaded && taskEntered.length > 0 ? <LoaderIcon /> : null}
-      {taskEntered.length === 0 ? null : (
-        <>
-          <H2>Your Tasks</H2>
-          <TasksUnderline />
-        </>
-      )}
-      {taskEntered.map((ts) => {
-        let Deadline = ts.time;
-        let DeadlineOf0 = Deadline.split("")[0];
-        let DeadlineOfRemaining = Deadline.split("").slice(1).join("").trim();
-        return (
-          <Card key={ts.id} priority={ts.priority}>
-            <CardDetails>
-              <TaskName>{ts.task}</TaskName>
-              <Para>
-                Time Assigned : <Span>{ts.time}</Span>
-              </Para>
-              <Para>
-                Priority :{" "}
-                <Priority priority={ts.priority}>{ts.priority}</Priority>
-              </Para>
-              <Para>
-                Deadline :{" "}
-                <Span>
-                  {moment()
-                    .add(parseInt(DeadlineOf0), DeadlineOfRemaining)
-                    .format("dddd, MMMM Do YYYY")
-                    .toLocaleString()}
-                </Span>
-              </Para>
-              <Para>
-                Having difficulties in completing this task try this resource{" "}
-                <LinkSpan
-                  onClick={() =>
-                    (window.location.href = `https://www.youtube.com/results?search_query=${ts.task}`)
-                  }
-                >
-                  Click Here
-                </LinkSpan>
-              </Para>
-              <ButtonDiv>
-                <DeleteButton
-                  type="button"
-                  onClick={(id) => removeTasksHandler(ts.id)}
-                >
-                  Delete
-                </DeleteButton>
-              </ButtonDiv>
-            </CardDetails>
-          </Card>
-        );
-      })}
-    </Wrapper>
+    <Slide bottom>
+      <Wrapper>
+        <Header>
+          <h1>TASK SAVER</h1>
+        </Header>
+        <TodoForm addTaskHandler={addTasks} />
+        {loaded && taskEntered.length > 0 ? <LoaderIcon /> : null}
+        {taskEntered.length === 0 ? null : (
+          <>
+            <H2>Your Tasks</H2>
+            <TasksUnderline />
+          </>
+        )}
+        {taskEntered.map((ts) => {
+          let Deadline = ts.time;
+          let DeadlineOf0 = Deadline.split("")[0];
+          let DeadlineOfRemaining = Deadline.split("").slice(1).join("").trim();
+          return (
+            <Card key={ts.id} priority={ts.priority}>
+              <CardDetails>
+                <TaskName>{ts.task}</TaskName>
+                <Para>
+                  Time Assigned : <Span>{ts.time}</Span>
+                </Para>
+                <Para>
+                  Priority :{" "}
+                  <Priority priority={ts.priority}>{ts.priority}</Priority>
+                </Para>
+                <Para>
+                  Deadline :{" "}
+                  <Span>
+                    {moment()
+                      .add(parseInt(DeadlineOf0), DeadlineOfRemaining)
+                      .format("dddd, MMMM Do YYYY")
+                      .toLocaleString()}
+                  </Span>
+                </Para>
+                <Para>
+                  Having difficulties in completing this task try this resource{" "}
+                  <LinkSpan
+                    onClick={() =>
+                      (window.location.href = `https://www.youtube.com/results?search_query=${ts.task}`)
+                    }
+                  >
+                    Click Here
+                  </LinkSpan>
+                </Para>
+                <ButtonDiv>
+                  <DeleteButton
+                    type="button"
+                    onClick={(id) => removeTasksHandler(ts.id)}
+                  >
+                    Delete
+                  </DeleteButton>
+                </ButtonDiv>
+              </CardDetails>
+            </Card>
+          );
+        })}
+      </Wrapper>
+    </Slide>
   );
 }
 
