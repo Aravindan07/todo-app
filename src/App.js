@@ -1,15 +1,15 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import HomePage from "./containers/HomePage/index";
-import Tasks from "./components/Tasks/index";
-// import Card from "./components/TaskCard/index";
+import LoginForm from "./containers/LoginForm/index";
+// import Tasks from "./components/Tasks/index";
 
 function App() {
   return (
     <React.Fragment>
       <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/tasks" component={Tasks} />
+        <Route exact path="/" component={LoginForm} />
+        <Route path="/tasks" component={HomePage} />
       </Switch>
     </React.Fragment>
   );

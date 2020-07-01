@@ -38,7 +38,7 @@ export const Card = styled.div`
   height: 400px;
   border-radius: 10px;
   box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.25);
-  margin: 25px 0px 0px 25px;
+  margin: 15px 0px 15px 25px;
   padding: 10px;
   overflow: auto;
   overflow-wrap: anywhere;
